@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using fmanagerFull.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace fmanagerFull
 {
@@ -27,6 +29,7 @@ namespace fmanagerFull
             services.AddReact();
             
             services.AddMvc();
+            services.AddDbContext<TransactionContext>(options => options.UseSqlite("DataSource=Transactions.db"));
 
             return services.BuildServiceProvider();
         }
