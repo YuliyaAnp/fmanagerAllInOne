@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fmanagerFull", "fmanagerFull\fmanagerFull.csproj", "{1DC5DEEB-35DC-4E1F-95B1-E28572942518}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DC5DEEB-35DC-4E1F-95B1-E28572942518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC5DEEB-35DC-4E1F-95B1-E28572942518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC5DEEB-35DC-4E1F-95B1-E28572942518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC5DEEB-35DC-4E1F-95B1-E28572942518}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
