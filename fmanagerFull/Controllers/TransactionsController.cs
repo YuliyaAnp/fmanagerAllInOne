@@ -19,9 +19,10 @@ namespace fmanagerFull.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Transaction>> GetAll()
+        public async Task<JsonResult> GetAll()
         {
-            return await context.Transaction.ToListAsync();
+            var list = await context.Transaction.ToListAsync();
+            return Json(list);
         }
 
         [HttpGet("{id}", Name = "GetTransaction")]
