@@ -2,7 +2,7 @@
     constructor(props){
         super(props);
         this.state = {
-            sum: 0,
+            sum: "",
             desc: "",
             transactions:[]
         };
@@ -13,19 +13,17 @@
 
     getTransactionsFromServer()
     {
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.url, true);
-        xhr.onload = function() 
-        {
-            var data = JSON.parse(xhr.responseText);
-            this.setState({ transactions: data });
-        }.bind(this);
-        xhr.send();
+        fetch(this.props.url)
+         .then(response => response.json())
+         .then(json => {
+         console.log(json);
+         this.setState({ transactions: json});
+         });
     }
 
     componentDidMount(){
-    this.getTransactionsFromServer();
-    window.setInterval(this.getTransactionsFromServer, this.props.pollInterval);
+        this.getTransactionsFromServer();
+        window.setInterval(this.getTransactionsFromServer, this.props.pollInterval);
     }
 
     handleInputChange(event){
@@ -44,20 +42,24 @@
         if (!sum || !desc) {
           return;
         }
-        // TODO: send request to the server
-        var data = new FormData();
-        data.append('sum', this.state.sum);
-        data.append('description', this.state.desc);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('post', this.props.postUrl, true);
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        xhr.onload = function() {
-          this.getTransactionsFromServer();
-        }.bind(this);
-        xhr.send(data);
+        var data = {Sum: sum, Description: desc};
 
-    this.setState({sum: '', desc: ''});
+        fetch(this.props.postUrl, {
+                        body: JSON.stringify(data), 
+                        cache: 'no-cache', 
+                        credentials: 'same-origin',
+                        headers: {
+                            'user-agent': 'Mozilla/4.0 MDN Example',
+                            'content-type': 'application/json'
+                                 },
+                        method: 'POST', 
+                        mode: 'cors', 
+                        redirect: 'follow',
+                        referrer: 'no-referrer', 
+         });
+
+         this.setState({sum: '', desc: ''});
     }
 
     render() {
@@ -77,13 +79,6 @@
           );
   }
 };
-
-/*App.propTypes = {
-    transactions: PropTypes.arrayOf(PropTypes.shape({
-        sum: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired
-    })),
-}*/
 
 class TableOfTransactions extends React.Component {
 

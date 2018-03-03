@@ -38,21 +38,31 @@ table, th, td {
     }
 
 button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
     padding: 15px 32px;
+    border-radius: 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    position: relative;
+    left: 10px
+}
+
+button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white
 }
 
 input {
     height: 10px;
     padding: 15px 32px;
     display: inline-block;
-    font-size: 15px
+    font-size: 15px;
 }
 
 @keyframes App-logo-spin {
