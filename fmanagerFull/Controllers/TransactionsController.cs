@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace fmanagerFull.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("[controller]")]
     public class TransactionsController : Controller
     {
         private readonly TransactionContext context;
@@ -18,12 +18,19 @@ namespace fmanagerFull.Controllers
             this.context = context;
         }
 
-        [HttpGet]
-        public async Task<JsonResult> GetAll()
+        public IActionResult Index()
         {
-            var list = await context.Transaction.ToListAsync();
-            return Json(list);
+            var list = context.Transaction.ToList();
+            return View(list);
         }
+
+        //[HttpGet]
+       // [Route("transactions")]
+      //  public async Task<JsonResult> GetAll()
+       // {
+      //      var list = await context.Transaction.ToListAsync();
+      //      return Json(list);
+    //    }
 
         [HttpGet("{id}", Name = "GetTransaction")]
         public async Task<IActionResult> GetById(int id)
@@ -38,6 +45,7 @@ namespace fmanagerFull.Controllers
         }
 
         [HttpPost]
+        [Route("transactions")]
         public async Task<IActionResult> Create([FromBody]Transaction transaction)
         {
             if (transaction == null)

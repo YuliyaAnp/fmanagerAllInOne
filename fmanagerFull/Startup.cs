@@ -54,7 +54,7 @@ namespace fmanagerFull
                 // your components as well as all of their dependencies.
                 // See http://reactjs.net/ for more information. Example:
                 config
-                    .AddScript("~/js/test.jsx");
+                    .AddScript("~/js/transactions.jsx");
                    // .AddScript("~/build/server.bundle.js");
                 //  .AddScript("~/Scripts/Second.jsx");
 
@@ -73,7 +73,8 @@ namespace fmanagerFull
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Transactions", action = "Index" });
             });
 
 

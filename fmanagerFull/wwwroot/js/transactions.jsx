@@ -4,11 +4,13 @@
         this.state = {
             sum: "",
             desc: "",
-            transactions:[]
+            transactions: this.props.initialData
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.getTransactionsFromServer = this.getTransactionsFromServer.bind(this);
         this.handleAddTransaction = this.handleAddTransaction.bind(this);
+
+        console.log(this.state.transactions);
     }
 
     getTransactionsFromServer()
@@ -22,7 +24,7 @@
     }
 
     componentDidMount(){
-        this.getTransactionsFromServer();
+       // this.getTransactionsFromServer();
         window.setInterval(this.getTransactionsFromServer, this.props.pollInterval);
     }
 
@@ -66,8 +68,7 @@
       return (
           <div>
               <div>
-                <TableOfTransactions
-                transactions = {this.state.transactions}/>
+                <TableOfTransactions transactions={this.state.transactions}/>
             </div>
             <div>
                 <ul></ul>
@@ -117,4 +118,4 @@ class TableOfTransactions extends React.Component {
     }
 };
 
-ReactDOM.render(<App url="/api/transactions" postUrl="/api/transactions" pollInterval={2000}/>, document.getElementById('root'));
+//ReactDOM.render(<App url="/api/transactions" postUrl="/api/transactions" pollInterval={2000}/>, document.getElementById('root'));
