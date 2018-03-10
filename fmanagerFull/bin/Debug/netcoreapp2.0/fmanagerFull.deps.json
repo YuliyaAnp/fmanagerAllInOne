@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "77ff902103db86c1c0fe564271baeb9ce263b502"
+    "signature": "a622dcb6c9abcf864ed5536657bba9934b4de51e"
   },
   "compilationOptions": {
     "defines": [
@@ -27,7 +27,7 @@
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.2",
-          "React.AspNet": "3.2.0"
+          "React.AspNet": "3.3.0"
         },
         "runtime": {
           "fmanagerFull.dll": {}
@@ -2594,11 +2594,11 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
-      "React.AspNet/3.2.0": {
+      "React.AspNet/3.3.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.0.2",
-          "React.AspNet.Middleware": "3.2.0",
-          "React.Core": "3.2.0"
+          "React.AspNet.Middleware": "3.3.0",
+          "React.Core": "3.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/React.AspNet.dll": {}
@@ -2607,14 +2607,14 @@
           "lib/netstandard2.0/React.AspNet.dll": {}
         }
       },
-      "React.AspNet.Middleware/3.2.0": {
+      "React.AspNet.Middleware/3.3.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1",
           "Microsoft.AspNetCore.StaticFiles": "2.0.1",
           "Microsoft.Extensions.Caching.Abstractions": "2.0.0",
           "Microsoft.Extensions.DependencyInjection": "2.0.0",
           "Microsoft.Extensions.FileProviders.Physical": "2.0.0",
-          "React.Core": "3.2.0"
+          "React.Core": "3.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/React.AspNet.Middleware.dll": {}
@@ -2623,7 +2623,7 @@
           "lib/netstandard2.0/React.AspNet.Middleware.dll": {}
         }
       },
-      "React.Core/3.2.0": {
+      "React.Core/3.3.0": {
         "dependencies": {
           "JSPool": "3.0.1",
           "JavaScriptEngineSwitcher.ChakraCore": "2.4.8",
@@ -5732,26 +5732,26 @@
       "path": "nuget.frameworks/4.0.0",
       "hashPath": "nuget.frameworks.4.0.0.nupkg.sha512"
     },
-    "React.AspNet/3.2.0": {
+    "React.AspNet/3.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-x9JO1Tm/qYlTMtFdcsa9bHQldXnlod5BYeHyTPAfYGbqS/liRD7+ipu6q1WxIsF1URcgDmcEiRr197p7NpuTWg==",
-      "path": "react.aspnet/3.2.0",
-      "hashPath": "react.aspnet.3.2.0.nupkg.sha512"
+      "sha512": "sha512-iKxGrTcYi+ho+/cShb5xu0PXqsb0WC8DTkclaNS5xHp7o1UzfBn2vd7wY8YiWnLcH2C7gtBVx18mctFgS6Wd1A==",
+      "path": "react.aspnet/3.3.0",
+      "hashPath": "react.aspnet.3.3.0.nupkg.sha512"
     },
-    "React.AspNet.Middleware/3.2.0": {
+    "React.AspNet.Middleware/3.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-N19llnDVZO5xk0vcIZoM0VWz3jeEzU6UqI/eeWgkmv35hxtfE0tLWqTosx6g0zyxGrs8o0yvivdQLYPki2hsGg==",
-      "path": "react.aspnet.middleware/3.2.0",
-      "hashPath": "react.aspnet.middleware.3.2.0.nupkg.sha512"
+      "sha512": "sha512-7aA4eU/K9oKcxMytA/OT4/pkei83yjNnyYb4djjFly0sqrRG2/pCHWjkHMkCJH+a75q6MYYaXYkYV8OaFpeg2Q==",
+      "path": "react.aspnet.middleware/3.3.0",
+      "hashPath": "react.aspnet.middleware.3.3.0.nupkg.sha512"
     },
-    "React.Core/3.2.0": {
+    "React.Core/3.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IPoWBbAuch1Y/SbyCPRIdvRJdIyrMbTboE+coqPm+c2nXXm4lemb6umFrq7LV/TmSUNWlLlWxyxpSb9rPvgCew==",
-      "path": "react.core/3.2.0",
-      "hashPath": "react.core.3.2.0.nupkg.sha512"
+      "sha512": "sha512-30kUMVRUtHjQIrlGPNN15hVpifZd0mdxnfv7yXWvKeQS3ENlDHlgpthyaUIMvKWSLe9PhwG9ftBNHE+yPag1iQ==",
+      "path": "react.core/3.3.0",
+      "hashPath": "react.core.3.3.0.nupkg.sha512"
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",

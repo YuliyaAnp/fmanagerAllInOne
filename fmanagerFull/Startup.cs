@@ -73,8 +73,7 @@ namespace fmanagerFull
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Transactions", action = "Index" });
+                    template: "{controller=Transactions}/{action=Index}/{id?}");
             });
 
 

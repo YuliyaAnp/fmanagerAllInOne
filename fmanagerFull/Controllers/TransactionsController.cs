@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace fmanagerFull.Controllers
 {
-    //[Route("[controller]")]
+    [Route("[controller]")]
     public class TransactionsController : Controller
     {
         private readonly TransactionContext context;
@@ -18,22 +18,22 @@ namespace fmanagerFull.Controllers
             this.context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var list = context.Transaction.ToList();
             return View(list);
         }
 
-        //[HttpGet]
-       // [Route("transactions")]
-      //  public async Task<JsonResult> GetAll()
-       // {
-      //      var list = await context.Transaction.ToListAsync();
-      //      return Json(list);
-    //    }
+        [HttpGet("Get")]
+        public JsonResult Get()
+        {
+            var list = context.Transaction.ToList();
+            return Json(list);
+        }
 
-        [HttpGet("{id}", Name = "GetTransaction")]
-        public async Task<IActionResult> GetById(int id)
+        [HttpGet("Get/{id}", Name = "GetTransaction")]
+        public async Task<IActionResult> Get(int id)
         {
             var transaction = await context.Transaction.SingleOrDefaultAsync(t => t.Id == id);
             if (transaction == null)
@@ -44,8 +44,8 @@ namespace fmanagerFull.Controllers
             return new ObjectResult(transaction);
         }
 
-        [HttpPost]
-        [Route("transactions")]
+        [HttpPost("Create")]
+    //    [Route("[controller]/Create")]
         public async Task<IActionResult> Create([FromBody]Transaction transaction)
         {
             if (transaction == null)
@@ -54,6 +54,7 @@ namespace fmanagerFull.Controllers
             await context.Transaction.AddAsync(transaction);
             context.SaveChanges();
 
+           // return View();
             return CreatedAtRoute("GetTransaction", new { id = transaction.Id }, transaction);
         }
 

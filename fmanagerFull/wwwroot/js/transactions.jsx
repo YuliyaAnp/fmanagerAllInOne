@@ -9,13 +9,18 @@
         this.handleInputChange = this.handleInputChange.bind(this);
         this.getTransactionsFromServer = this.getTransactionsFromServer.bind(this);
         this.handleAddTransaction = this.handleAddTransaction.bind(this);
-
-        console.log(this.state.transactions);
     }
 
     getTransactionsFromServer()
     {
-        fetch(this.props.url)
+    console.log("getTransactionFromServer");
+        fetch(this.props.url, {
+                        mode: 'cors',
+                        cache: 'no-cache',      
+                        headers : { 
+                                'content-type': 'application/json',
+                                'accept': 'application/json'
+                              }})
          .then(response => response.json())
          .then(json => {
          console.log(json);
@@ -25,6 +30,7 @@
 
     componentDidMount(){
        // this.getTransactionsFromServer();
+       console.log("componentDidMount");
         window.setInterval(this.getTransactionsFromServer, this.props.pollInterval);
     }
 
@@ -38,6 +44,7 @@
     }
 
     handleAddTransaction(event){
+        console.log("handleAddTransaction");
         event.preventDefault();
         var sum = this.state.sum.trim();
         var desc = this.state.desc.trim();
@@ -103,14 +110,14 @@ class TableOfTransactions extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                        {this.props.transactions.map(function(item) 
+                      {this.props.transactions.map(function(item) 
                         {
                             var cells = cols.map(function(colData) 
                             {
                                 return <td>{item[colData.key]}</td>;
                             });
                             return <tr key={item.id}>{cells}</tr>;
-                        })}
+                        })} 
                     </tbody>
                 </table>
             </div>
