@@ -13,7 +13,7 @@
 
     getTransactionsFromServer()
     {
-    console.log("getTransactionFromServer");
+        console.log("getTransactionFromServer");
         fetch(this.props.url, {
                         mode: 'cors',
                         cache: 'no-cache',      
@@ -29,8 +29,7 @@
     }
 
     componentDidMount(){
-       // this.getTransactionsFromServer();
-       console.log("componentDidMount");
+        console.log("componentDidMount");
         window.setInterval(this.getTransactionsFromServer, this.props.pollInterval);
     }
 
@@ -71,11 +70,13 @@
          this.setState({sum: '', desc: ''});
     }
 
+
+
     render() {
       return (
           <div>
               <div>
-                <TableOfTransactions transactions={this.state.transactions}/>
+                <TableOfTransactions transactions={this.state.transactions} deleteUrl={this.props.deleteUrl}/>
             </div>
             <div>
                 <ul></ul>
@@ -88,15 +89,48 @@
   }
 };
 
+class DeleteButton extends React.Component{
+    constructor(props) {
+        super(props);
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick(event) {
+    console.log("deleteHandleClickButton");
+    fetch(this.props.dUrl+"/"+this.props.id, {
+                        cache: 'no-cache', 
+                        credentials: 'same-origin',
+                        headers: {
+                            'user-agent': 'Mozilla/4.0 MDN Example',
+                            'content-type': 'application/json'
+                                 },
+                        method: 'DELETE', 
+                        mode: 'cors', 
+                        redirect: 'follow',
+                        referrer: 'no-referrer', 
+         });
+  }
+
+    render(){
+        return(
+            <button onClick={this.onClick}>Delete</button>
+        )
+    }
+};
+
+
 class TableOfTransactions extends React.Component {
+    constructor(props){
+        super(props);
+    }
 
     render() {
-
     var cols = [
     { key: 'id', label: 'No'},
     { key: 'sum', label: 'Sum' },
     { key: 'description', label: 'Description' }
     ];
+    var deleteUrl = this.props.deleteUrl;
 
         return (
             <div className="transactions-table">
@@ -116,7 +150,9 @@ class TableOfTransactions extends React.Component {
                             {
                                 return <td>{item[colData.key]}</td>;
                             });
-                            return <tr key={item.id}>{cells}</tr>;
+                            return <tr key={item.id}>{cells}<td>
+                            <DeleteButton id={item.id} dUrl={deleteUrl}/>
+                            </td></tr>;
                         })} 
                     </tbody>
                 </table>
@@ -124,5 +160,3 @@ class TableOfTransactions extends React.Component {
         );
     }
 };
-
-//ReactDOM.render(<App url="/api/transactions" postUrl="/api/transactions" pollInterval={2000}/>, document.getElementById('root'));

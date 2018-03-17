@@ -45,7 +45,6 @@ namespace fmanagerFull.Controllers
         }
 
         [HttpPost("Create")]
-    //    [Route("[controller]/Create")]
         public async Task<IActionResult> Create([FromBody]Transaction transaction)
         {
             if (transaction == null)
@@ -54,11 +53,10 @@ namespace fmanagerFull.Controllers
             await context.Transaction.AddAsync(transaction);
             context.SaveChanges();
 
-           // return View();
             return CreatedAtRoute("GetTransaction", new { id = transaction.Id }, transaction);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update/{id}")]
         public async Task<IActionResult> Put(int id, [FromBody]Transaction transaction)
         {
             if (transaction == null || transaction.Id != id)
@@ -77,7 +75,7 @@ namespace fmanagerFull.Controllers
             return new NoContentResult();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var trans = await context.Transaction.SingleOrDefaultAsync(t => t.Id == id);
