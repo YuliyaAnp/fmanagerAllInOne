@@ -1,11 +1,25 @@
 ﻿<Properties StartupConfiguration="{1DC5DEEB-35DC-4E1F-95B1-E28572942518}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="fmanagerFull/wwwroot/js/transactions.jsx">
+  <MonoDevelop.Ide.Workbench ActiveDocument="fmanagerFull/Models/Transaction.cs">
     <Files>
-      <File FileName="fmanagerFull/Controllers/TransactionsController.cs" Line="36" Column="53" />
-      <File FileName="fmanagerFull/wwwroot/js/transactions.jsx" Line="100" Column="31" />
-      <File FileName="fmanagerFull/Views/Transactions/Index.cshtml" Line="17" Column="43" />
-      <File FileName="fmanagerFull/Startup.cs" Line="76" Column="71" />
+      <File FileName="fmanagerFull/Controllers/TransactionsController.cs" Line="20" Column="9" />
+      <File FileName="fmanagerFull/Views/Transactions/Index.cshtml" Line="16" Column="20" />
+      <File FileName="fmanagerFull/Models/Transaction.cs" Line="7" Column="48" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="fmanagerFull" expanded="True">
+            <Node name="fmanagerFull.UnitTests" expanded="True">
+              <Node name="fmanagerFull" expanded="True">
+                <Node name="UnitTests" expanded="True">
+                  <Node name="TransactionsControllerTests" expanded="True" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -21,21 +21,21 @@ namespace fmanagerFull.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var list = context.Transaction.ToList();
+            var list = context.GetTransactions();
             return View(list);
         }
 
         [HttpGet("Get")]
         public JsonResult Get()
         {
-            var list = context.Transaction.ToList();
+            var list = context.GetTransactions();
             return Json(list);
         }
 
         [HttpGet("Get/{id}", Name = "GetTransaction")]
         public async Task<IActionResult> Get(int id)
         {
-            var transaction = await context.Transaction.SingleOrDefaultAsync(t => t.Id == id);
+            var transaction = await context.GetById(id);
             if (transaction == null)
             {
                 return NotFound();
@@ -50,7 +50,7 @@ namespace fmanagerFull.Controllers
             if (transaction == null)
                 return BadRequest();
 
-            await context.Transaction.AddAsync(transaction);
+            await context.AddTransaction(transaction);
             context.SaveChanges();
 
             return CreatedAtRoute("GetTransaction", new { id = transaction.Id }, transaction);
@@ -62,14 +62,14 @@ namespace fmanagerFull.Controllers
             if (transaction == null || transaction.Id != id)
                 return BadRequest();
 
-            var tran = await context.Transaction.SingleOrDefaultAsync(t => t.Id == id);
+            var tran = await context.GetById(id);
             if (tran == null)
                 return NotFound();
 
             tran.Sum = transaction.Sum;
             tran.Description = transaction.Description;
 
-            context.Transaction.Update(tran);
+            context.Update(tran);
             context.SaveChanges();
 
             return new NoContentResult();
@@ -78,11 +78,11 @@ namespace fmanagerFull.Controllers
         [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var trans = await context.Transaction.SingleOrDefaultAsync(t => t.Id == id);
+            var trans = await context.GetById(id);
             if (trans == null)
                 return NotFound();
 
-            context.Transaction.Remove(trans);
+            context.DeleteTransaction(trans);
             context.SaveChanges();
 
             return new NoContentResult();
