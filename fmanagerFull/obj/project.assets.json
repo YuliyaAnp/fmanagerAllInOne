@@ -13644,13 +13644,13 @@
       "projectName": "fmanagerFull",
       "projectPath": "/Users/anpilova/Projects/fmanagerFull/fmanagerFull/fmanagerFull.csproj",
       "packagesPath": "/Users/anpilova/.nuget/packages/",
-      "outputPath": "/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj",
+      "outputPath": "/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/anpilova/.config/NuGet/NuGet.Config"
+        "/Users/anpilova/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13672,27 +13672,26 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "suppressParent": "All",
+          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": {
             "target": "Package",
-            "version": "2.0",
+            "version": "[2.4.12, )"
+          },
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "[2.0.5, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
-            "version": "2.0.2"
-          },
-          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": {
-            "target": "Package",
-            "version": "2.4.12"
-          },
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "2.0.5"
+            "version": "[2.0.2, )"
           },
           "React.AspNet": {
             "target": "Package",
-            "version": "3.3.0"
+            "version": "[3.3.0, )"
           }
         },
         "imports": [

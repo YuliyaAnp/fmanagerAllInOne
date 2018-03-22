@@ -13,6 +13,7 @@ namespace fmanagerFull.Models
         }
 
         public DbSet<Transaction> Transaction { get; set; }
+        public DbSet<Account> Account { get; set; }
 
         public async Task AddTransaction(Transaction transaction)
         {
