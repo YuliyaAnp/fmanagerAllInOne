@@ -1,4 +1,4 @@
-﻿@model IEnumerable<fmanagerFull.Models.Transaction>
+﻿@model IEnumerable<fmanagerFull.Models.Account>
 @{
     Layout = null;
 }
@@ -8,19 +8,14 @@
     <link href="@Url.Content("~/css/App.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    @Html.ActionLink("Accounts","Index","Accounts", null, new { @class = "link" })
-    @Html.React("Transactions", new
+    @Html.React("Accounts", new
     {
         initialData = Model,
-        url = "/transactions/Get",
-        postUrl = "/transactions/Create",
-        deleteUrl="/transactions/Delete",
-        updatedUrl="/transactions/Update",
-        pollInterval = 2000,
+        url = "/accounts/Get",
     })
     <script crossorigin src="https://unpkg.com/react/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
-    <script src="@Url.Content("~/js/transactions.jsx")"></script>
+    <script src="@Url.Content("~/js/accounts.jsx")"></script>
     @Html.ReactInitJavaScript()
 </body>
 </html>

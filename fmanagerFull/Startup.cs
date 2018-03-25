@@ -29,7 +29,7 @@ namespace fmanagerFull
             services.AddReact();
             
             services.AddMvc();
-            services.AddDbContext<TransactionContext>(options => options.UseSqlite("DataSource=Transactions.db"));
+            services.AddDbContext<FinanceManagerContext>(options => options.UseSqlite("DataSource=FinanceManager.db"));
 
             return services.BuildServiceProvider();
         }
@@ -54,8 +54,9 @@ namespace fmanagerFull
                 // your components as well as all of their dependencies.
                 // See http://reactjs.net/ for more information. Example:
                 config
-                    .AddScript("~/js/transactions.jsx");
-                   // .AddScript("~/build/server.bundle.js");
+                    .AddScript("~/js/transactions.jsx")
+                    .AddScript("~/js/accounts.jsx");
+                // .AddScript("~/build/server.bundle.js");
                 //  .AddScript("~/Scripts/Second.jsx");
 
                 // If you use an external build too (for example, Babel, Webpack,
@@ -63,7 +64,7 @@ namespace fmanagerFull
                 // ReactJS.NET's version of Babel and loading the pre-transpiled
                 // scripts. Example:
                 //config
-                //  .SetLoadBabel(false)
+                    //.SetLoadBabel(true);
                 //  .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
             });
 

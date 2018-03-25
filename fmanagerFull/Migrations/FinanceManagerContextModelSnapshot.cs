@@ -10,8 +10,8 @@ using System;
 
 namespace fmanagerFull.Migrations
 {
-    [DbContext(typeof(TransactionContext))]
-    partial class TransactionContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(FinanceManagerContext))]
+    partial class FinanceManagerContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -42,9 +42,9 @@ namespace fmanagerFull.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AccountToAddId");
+                    b.Property<string>("AccountToIncreaseAmount");
 
-                    b.Property<int?>("AccountToSubstractId");
+                    b.Property<string>("AccountToSubstractAmount");
 
                     b.Property<DateTime>("DateTime");
 
@@ -54,22 +54,7 @@ namespace fmanagerFull.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountToAddId");
-
-                    b.HasIndex("AccountToSubstractId");
-
                     b.ToTable("Transaction");
-                });
-
-            modelBuilder.Entity("fmanagerFull.Models.Transaction", b =>
-                {
-                    b.HasOne("fmanagerFull.Models.Account", "AccountToAdd")
-                        .WithMany()
-                        .HasForeignKey("AccountToAddId");
-
-                    b.HasOne("fmanagerFull.Models.Account", "AccountToSubstract")
-                        .WithMany()
-                        .HasForeignKey("AccountToSubstractId");
                 });
 #pragma warning restore 612, 618
         }

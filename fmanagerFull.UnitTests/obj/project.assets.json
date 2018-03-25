@@ -22,7 +22,7 @@
           }
         }
       },
-      "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.12": {
+      "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.14": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/osx-x64/native/libChakraCore.dylib": {
@@ -5747,7 +5747,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": "2.4.12",
+          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": "2.4.14",
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.2",
           "React.AspNet": "3.3.0"
@@ -5782,13 +5782,13 @@
         "readme.txt"
       ]
     },
-    "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.12": {
-      "sha512": "Z8vKCy4TJs6k4SBvHaYDnCRs0xLc+8qexw3xLZx18YZywC9NAglsFJI6soWu+1uSd3iUHBzcW+jdREALmiIu0w==",
+    "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.14": {
+      "sha512": "SAF3kX5IOQCelWetkKDmxFs7hZAazPXXf16W5XPzVgkIggt0ZO50LYXlKM4jUewlr8Q171QCrfE7jDYzcfp3kQ==",
       "type": "package",
-      "path": "javascriptengineswitcher.chakracore.native.osx-x64/2.4.12",
+      "path": "javascriptengineswitcher.chakracore.native.osx-x64/2.4.14",
       "files": [
         "chakra-core-license.txt",
-        "javascriptengineswitcher.chakracore.native.osx-x64.2.4.12.nupkg.sha512",
+        "javascriptengineswitcher.chakracore.native.osx-x64.2.4.14.nupkg.sha512",
         "javascriptengineswitcher.chakracore.native.osx-x64.nuspec",
         "readme.txt",
         "runtimes/osx-x64/native/libChakraCore.dylib"

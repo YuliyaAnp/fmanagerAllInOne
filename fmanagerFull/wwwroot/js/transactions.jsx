@@ -1,4 +1,4 @@
-﻿class App extends React.Component {
+﻿class Transactions extends React.Component {
     constructor(props){
         super(props);
         this.state = {

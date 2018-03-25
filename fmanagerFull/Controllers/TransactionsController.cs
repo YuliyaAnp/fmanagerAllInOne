@@ -11,9 +11,9 @@ namespace fmanagerFull.Controllers
     [Route("[controller]")]
     public class TransactionsController : Controller
     {
-        private readonly TransactionContext context;
+        private readonly FinanceManagerContext context;
 
-        public TransactionsController(TransactionContext context)
+        public TransactionsController(FinanceManagerContext context)
         {
             this.context = context;
         }

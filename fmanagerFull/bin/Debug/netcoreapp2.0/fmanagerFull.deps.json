@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "a622dcb6c9abcf864ed5536657bba9934b4de51e"
+    "signature": "591ab0ac6197f17cab67b8a5a6e95a8d72ec32b3"
   },
   "compilationOptions": {
     "defines": [
@@ -23,7 +23,7 @@
     ".NETCoreApp,Version=v2.0": {
       "fmanagerFull/1.0.0": {
         "dependencies": {
-          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": "2.4.12",
+          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": "2.4.14",
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.2",
@@ -55,7 +55,7 @@
           "lib/netstandard1.3/JavaScriptEngineSwitcher.ChakraCore.dll": {}
         }
       },
-      "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.12": {
+      "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.14": {
         "runtimeTargets": {
           "runtimes/osx-x64/native/libChakraCore.dylib": {
             "rid": "osx-x64",
@@ -4472,12 +4472,12 @@
       "path": "javascriptengineswitcher.chakracore/2.4.8",
       "hashPath": "javascriptengineswitcher.chakracore.2.4.8.nupkg.sha512"
     },
-    "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.12": {
+    "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64/2.4.14": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Z8vKCy4TJs6k4SBvHaYDnCRs0xLc+8qexw3xLZx18YZywC9NAglsFJI6soWu+1uSd3iUHBzcW+jdREALmiIu0w==",
-      "path": "javascriptengineswitcher.chakracore.native.osx-x64/2.4.12",
-      "hashPath": "javascriptengineswitcher.chakracore.native.osx-x64.2.4.12.nupkg.sha512"
+      "sha512": "sha512-SAF3kX5IOQCelWetkKDmxFs7hZAazPXXf16W5XPzVgkIggt0ZO50LYXlKM4jUewlr8Q171QCrfE7jDYzcfp3kQ==",
+      "path": "javascriptengineswitcher.chakracore.native.osx-x64/2.4.14",
+      "hashPath": "javascriptengineswitcher.chakracore.native.osx-x64.2.4.14.nupkg.sha512"
     },
     "JavaScriptEngineSwitcher.Core/2.4.9": {
       "type": "package",

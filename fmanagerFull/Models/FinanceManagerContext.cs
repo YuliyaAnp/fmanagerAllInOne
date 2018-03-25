@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace fmanagerFull.Models
 {
-    public class TransactionContext : DbContext
+    public class FinanceManagerContext : DbContext
     {
-        public TransactionContext(DbContextOptions<TransactionContext> options) : base(options)
+        public FinanceManagerContext(DbContextOptions<FinanceManagerContext> options) : base(options)
         {
         }
 
@@ -38,6 +38,11 @@ namespace fmanagerFull.Models
         public void UpdateTransaction(Transaction transaction)
         {
             Transaction.Update(transaction);
+        }
+
+        public IEnumerable<Account> GetAccounts()
+        {
+            return Account.ToList();
         }
     }
 }

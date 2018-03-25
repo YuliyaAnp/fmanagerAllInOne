@@ -8,7 +8,7 @@ namespace fmanagerFull.Models
         public int Sum { get; set; }
         public string Description { get; set; }
         public DateTime DateTime { get; set; }
-        public Account AccountToAdd { get; set; }
-        public Account AccountToSubstract { get; set; }
+        public string AccountToIncreaseAmount { get; set; }
+        public string AccountToSubstractAmount { get; set; }
     }
 }

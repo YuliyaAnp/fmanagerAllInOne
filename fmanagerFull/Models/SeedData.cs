@@ -9,29 +9,34 @@ namespace fmanagerFull.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new TransactionContext(
-                serviceProvider.GetRequiredService<DbContextOptions<TransactionContext>>()))
+            using (var context = new FinanceManagerContext(
+                serviceProvider.GetRequiredService<DbContextOptions<FinanceManagerContext>>()))
             {
                 if (!context.Transaction.Any())
                 {
                     context.Transaction.AddRange(
                      new Transaction
                      {
-                         Sum = 10,
-                         Description = "Food",
-                         DateTime = DateTime.Today
+                         Sum = -10,
+                         Description = "McDonalds",
+                         DateTime = DateTime.Today,
+                         AccountToIncreaseAmount = "Cafe",
+                         AccountToSubstractAmount = "Santander debit card"
                      },
                      new Transaction
                      {
-                         Sum = -30,
-                         Description = "Cinema",
-                         DateTime = DateTime.Today
+                         Sum = 300,
+                         Description = "Salary",
+                         DateTime = DateTime.Today,
+                         AccountToIncreaseAmount = "Salary"
                      },
                      new Transaction
                      {
-                         Sum = 10,
-                         Description = "Income",
-                         DateTime = DateTime.Today
+                         Sum = -10,
+                         Description = "Coffee",
+                         DateTime = DateTime.Today,
+                         AccountToIncreaseAmount = "Cafe",
+                         AccountToSubstractAmount = "Roubles cash"
                      }
 
                     );
@@ -52,9 +57,23 @@ namespace fmanagerFull.Models
                          {
                              Balance = 0,
                              Currency = Currency.Pound,
-                             Name = "Asos salary",
-                             Type = AccountType.Income
-                         }
+                             Name = "Santander debit card",
+                             Type = AccountType.Assets
+                         },
+                        new Account
+                        {
+                            Balance = 0,
+                            Currency = Currency.Pound,
+                            Name = "Salary",
+                            Type = AccountType.Income
+                        },
+                        new Account
+                        {
+                            Balance = 0,
+                            Currency = Currency.Pound,
+                            Name = "Cafe",
+                            Type = AccountType.Expenses
+                        }
                         );
 
                     context.SaveChanges();

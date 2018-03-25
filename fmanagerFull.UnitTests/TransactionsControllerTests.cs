@@ -13,13 +13,13 @@ namespace fmanagerFull.UnitTests
 {
     public class TransactionsControllerTests : IDisposable
     {
-        TransactionContext testTransactionContext;
+        FinanceManagerContext testTransactionContext;
         TransactionsController controller;
 
         public TransactionsControllerTests()
         {
-            var builder = new DbContextOptionsBuilder<TransactionContext>().UseInMemoryDatabase("TestDatabase");
-            testTransactionContext = new TransactionContext(builder.Options);
+            var builder = new DbContextOptionsBuilder<FinanceManagerContext>().UseInMemoryDatabase("TestDatabase");
+            testTransactionContext = new FinanceManagerContext(builder.Options);
             controller = new TransactionsController(testTransactionContext);
         }
 
