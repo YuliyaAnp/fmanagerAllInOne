@@ -14715,6 +14715,7 @@
         "netcoreapp2.0"
       ],
       "sources": {
+        "/Users/anpilova/Projects/Asos.TestLibrary/Asos.Sizing.SizeManagement.TestLibrary": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

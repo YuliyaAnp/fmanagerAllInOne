@@ -13644,18 +13644,19 @@
       "projectName": "fmanagerFull",
       "projectPath": "/Users/anpilova/Projects/fmanagerFull/fmanagerFull/fmanagerFull.csproj",
       "packagesPath": "/Users/anpilova/.nuget/packages/",
-      "outputPath": "/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/",
+      "outputPath": "/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/anpilova/.nuget/NuGet/NuGet.Config"
+        "/Users/anpilova/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "/Users/anpilova/Projects/Asos.TestLibrary/Asos.Sizing.SizeManagement.TestLibrary": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -13672,26 +13673,27 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": {
-            "target": "Package",
-            "version": "[2.4.14, )"
-          },
-          "Microsoft.AspNetCore.All": {
-            "target": "Package",
-            "version": "[2.0.5, )"
-          },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "2.0",
             "autoReferenced": true
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
-            "version": "[2.0.2, )"
+            "version": "2.0.2"
+          },
+          "Microsoft.AspNetCore.All": {
+            "target": "Package",
+            "version": "2.0.5"
           },
           "React.AspNet": {
             "target": "Package",
-            "version": "[3.3.0, )"
+            "version": "3.3.0"
+          },
+          "JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64": {
+            "target": "Package",
+            "version": "2.4.14"
           }
         },
         "imports": [
