@@ -5,8 +5,8 @@
             sum: "",
             desc: "",
             date: "",
-            accountFrom: 0,
-            accountTo: 0,
+            accountFrom: "",
+            accountTo: "",
             transactions: this.props.initialData,
             accounts: []
         };
@@ -29,6 +29,7 @@
                               }})
          .then(response => response.json())
          .then(json => {
+         console.log(json);
          this.setState({ transactions: json});
          });
     }
@@ -102,7 +103,7 @@
                         referrer: 'no-referrer', 
          });
 
-         this.setState({sum: '', desc: '', date: '', accountFrom: 0, accountTo: 0});
+         this.setState({sum: '', desc: '', date: '', accountFrom: '', accountTo: ''});
     }
 
     render() {
@@ -134,7 +135,7 @@
                           <select onChange={this.handleAccountFromSelectChange}>
                                 {this.state.accounts.map(function(account) 
                                     { 
-                                        return <option value={account.id}>{account.name}</option>
+                                        return <option value={account.name}>{account.name}</option>
                                     })}
                           </select>                        
                         </td>
@@ -145,7 +146,7 @@
                             <select onChange={this.handleAccountToSelectChange}>
                                 {this.state.accounts.map(function(account) 
                                     { 
-                                        return <option value={account.id}>{account.name}</option>
+                                        return <option value={account.name}>{account.name}</option>
                                     })}
                           </select>                            
                         </td>
@@ -181,7 +182,7 @@ class DeleteButton extends React.Component{
                         redirect: 'follow',
                         referrer: 'no-referrer', 
          });
-  }
+    }
 
     render(){
         return(
@@ -200,7 +201,10 @@ class TableOfTransactions extends React.Component {
     var cols = [
     { key: 'id', label: 'No'},
     { key: 'sum', label: 'Sum' },
-    { key: 'description', label: 'Description' }
+    { key: 'description', label: 'Description' },
+    { key: 'dateTime', label: 'Date'},
+    { key: 'accountToSubstractAmount', label: 'AccountFrom'},
+    { key: 'accountToIncreaseAmount', label: 'AccountTo'},
     ];
     var deleteUrl = this.props.deleteUrl;
 
@@ -210,9 +214,12 @@ class TableOfTransactions extends React.Component {
                 <table class="transaction-table">
                     <thead>
                     <tr>
-                        <th style={{"width" : "20%"}}>{cols[0].label}</th>
-                        <th style={{"width" : "30%"}}>{cols[1].label}</th>
-                        <th style={{"width" : "50%"}}>{cols[2].label}</th>
+                        <th style={{"width" : "10%"}}>{cols[0].label}</th>
+                        <th style={{"width" : "10%"}}>{cols[1].label}</th>
+                        <th style={{"width" : "30%"}}>{cols[2].label}</th>
+                        <th style={{"width" : "20%"}}>{cols[3].label}</th>
+                        <th style={{"width" : "15%"}}>{cols[4].label}</th>
+                        <th style={{"width" : "15%"}}>{cols[5].label}</th>
                     </tr>
                     </thead>
                     <tbody>

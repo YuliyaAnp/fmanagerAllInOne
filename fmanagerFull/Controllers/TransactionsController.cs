@@ -29,6 +29,8 @@ namespace fmanagerFull.Controllers
         public JsonResult Get()
         {
             var list = context.GetTransactions();
+            var jsonSettings = new Newtonsoft.Json.JsonSerializerSettings();
+            jsonSettings.DateFormatString = "dd/MM/yyyy";
             return Json(list);
         }
 
@@ -53,7 +55,7 @@ namespace fmanagerFull.Controllers
             await context.AddTransaction(transaction);
             context.SaveChanges();
 
-            return CreatedAtRoute("GetTransaction", new { id = transaction.Id }, transaction);
+            return Ok();
         }
 
         [HttpPut("Update/{id}")]
