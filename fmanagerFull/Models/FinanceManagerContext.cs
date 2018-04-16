@@ -30,7 +30,7 @@ namespace fmanagerFull.Models
             return await Transaction.SingleOrDefaultAsync(t => t.Id == id);
         }
 
-        public IEnumerable<Transaction> GetTransactions()
+		public IEnumerable<Transaction> GetTransactions()
         {
             return Transaction.ToList();
         }
@@ -43,6 +43,16 @@ namespace fmanagerFull.Models
         public IEnumerable<Account> GetAccounts()
         {
             return Account.ToList();
+        }
+
+        public Account GetAccountByName(string accountName)
+        {
+            return Account.SingleOrDefault(a => a.Name == accountName);
+        }
+
+        public void UpdateAccount(Account account)
+        {
+            Account.Update(account);
         }
     }
 }

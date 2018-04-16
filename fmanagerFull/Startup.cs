@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using fmanagerFull.Models;
 using Microsoft.EntityFrameworkCore;
+using fmanagerFull.Controllers;
 
 namespace fmanagerFull
 {
@@ -30,6 +31,7 @@ namespace fmanagerFull
             
             services.AddMvc();
             services.AddDbContext<FinanceManagerContext>(options => options.UseSqlite("DataSource=FinanceManager.db"));
+            services.AddTransient<ITransactionsService, TransactionsService>();
 
             return services.BuildServiceProvider();
         }

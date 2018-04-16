@@ -1,13 +1,9 @@
 ﻿@model IEnumerable<fmanagerFull.Models.Transaction>
 
 @{
-    Layout = null;
+    Layout = "../_Layout.cshtml";
 }
 <html>
-<head>
-    <title>Hello React</title>
-    <link href="@Url.Content("~/css/App.css")" rel="stylesheet" type="text/css" />
-</head>
 <body>
     @Html.React("Transactions", new
     {
