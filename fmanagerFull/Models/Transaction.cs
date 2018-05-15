@@ -4,11 +4,12 @@ namespace fmanagerFull.Models
 {
     public class Transaction
     {
-        public int Id { get; set; }
         public int Sum { get; set; }
         public string Description { get; set; }
         public DateTime DateTime { get; set; }
-        public string AccountToIncreaseAmount { get; set; }
-        public string AccountToSubstractAmount { get; set; }
+        public string AccountToIncreaseName { get; set; }
+        public string AccountToSubstractName { get; set; }
+        //public Currency Currency { get; set; }
+        public int Id { get; set; }
     }
 }

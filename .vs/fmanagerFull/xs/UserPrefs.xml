@@ -1,8 +1,41 @@
 ﻿<Properties StartupConfiguration="{1DC5DEEB-35DC-4E1F-95B1-E28572942518}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="fmanagerFull/Program.cs">
+    <Files>
+      <File FileName="fmanagerFull/Controllers/TransactionsService.cs" Line="59" Column="19" />
+      <File FileName="fmanagerFull.UnitTests/TransactionsServiceTests.cs" Line="57" Column="29" />
+      <File FileName="fmanagerFull/SqlDbClient.cs" Line="80" Column="27" />
+      <File FileName="fmanagerFull/Models/Account.cs" Line="9" Column="9" />
+      <File FileName="fmanagerFull/Startup.cs" Line="30" Column="33" />
+      <File FileName="fmanagerFull/Controllers/TransactionsController.cs" Line="24" Column="25" />
+      <File FileName="fmanagerFull/Models/Transaction.cs" Line="12" Column="11" />
+      <File FileName="fmanagerFull/Models/TransactionRecord.cs" Line="15" Column="1" />
+      <File FileName="fmanagerFull/Models/SeedData.cs" Line="92" Column="4" />
+      <File FileName="fmanagerFull/Program.cs" Line="27" Column="23" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="fmanagerFull" expanded="True">
+            <Node name="fmanagerFull.UnitTests" expanded="True">
+              <Node name="fmanagerFull" expanded="True">
+                <Node name="UnitTests" expanded="True">
+                  <Node name="TransactionsServiceShould" expanded="True">
+                    <Node name="ReturnAllTransactions_WhenGetTransactions" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/anpilova/Projects/fmanagerFull/fmanagerFull/Models/FinanceManagerContext.cs" relfile="fmanagerFull/Models/FinanceManagerContext.cs" line="27" column="15" />
+      <Breakpoint file="/Users/anpilova/Projects/fmanagerFull/fmanagerFull/SqlDbClient.cs" relfile="fmanagerFull/SqlDbClient.cs" line="40" column="26" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.fmanagerFull PreferredExecutionTarget="MonoDevelop.Default" />

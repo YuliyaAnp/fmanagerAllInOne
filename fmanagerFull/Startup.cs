@@ -30,8 +30,8 @@ namespace fmanagerFull
             services.AddReact();
             
             services.AddMvc();
-            services.AddDbContext<FinanceManagerContext>(options => options.UseSqlite("DataSource=FinanceManager.db"));
-            services.AddTransient<ITransactionsService, TransactionsService>();
+           // services.AddDbContext<FinanceManagerContext>(options => options.UseSqlite("DataSource=FinanceManager.db"));
+            services.AddTransient<TransactionsService, TransactionsService>();
 
             return services.BuildServiceProvider();
         }

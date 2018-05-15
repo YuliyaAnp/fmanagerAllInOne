@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 namespace fmanagerFull.Models
 {
@@ -10,44 +11,47 @@ namespace fmanagerFull.Models
     {
         public FinanceManagerContext(DbContextOptions<FinanceManagerContext> options) : base(options)
         {
+            
         }
 
-        public DbSet<Transaction> Transaction { get; set; }
+        public DbSet<TransactionRecord> Transaction { get; set; }
         public DbSet<Account> Account { get; set; }
 
-        public async Task AddTransaction(Transaction transaction)
+        public async Task AddTransaction(TransactionRecord transaction)
         {
             await Transaction.AddAsync(transaction);
         }
 
-        public void DeleteTransaction(Transaction transaction)
+        public void DeleteTransaction(TransactionRecord transactionRecord)
         {
-            Transaction.Remove(transaction);
+            Entry(transactionRecord).State = EntityState.Deleted;
+           // Transaction.Remove(transactionRecord);
+
         }
 
-        public async Task<Transaction> GetById(int id)
+        public TransactionRecord GetById(int id)
         {
-            return await Transaction.SingleOrDefaultAsync(t => t.Id == id);
+            return Transaction.SingleOrDefault(t => t.Id == id);
         }
 
-		public IEnumerable<Transaction> GetTransactions()
+		public IEnumerable<TransactionRecord> GetTransactions()
         {
-            return Transaction.ToList();
+            return Transaction.AsNoTracking().ToList();
         }
 
-        public void UpdateTransaction(Transaction transaction)
+        public void UpdateTransaction(TransactionRecord transaction)
         {
             Transaction.Update(transaction);
         }
 
         public IEnumerable<Account> GetAccounts()
         {
-            return Account.ToList();
+            return Account.AsNoTracking().ToList();
         }
 
-        public Account GetAccountByName(string accountName)
+        public Account GetAccountById(int accountId)
         {
-            return Account.SingleOrDefault(a => a.Name == accountName);
+            return Account.SingleOrDefault(a => a.Id == accountId);
         }
 
         public void UpdateAccount(Account account)

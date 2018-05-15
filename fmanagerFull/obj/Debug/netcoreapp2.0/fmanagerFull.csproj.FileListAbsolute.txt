@@ -1,11 +1,10 @@
+/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.csproj.CoreCompileInputs.cache
+/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.AssemblyInfoInputs.cache
+/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.AssemblyInfo.cs
 /Users/anpilova/Projects/fmanagerFull/fmanagerFull/bin/Debug/netcoreapp2.0/fmanagerFull.deps.json
 /Users/anpilova/Projects/fmanagerFull/fmanagerFull/bin/Debug/netcoreapp2.0/fmanagerFull.runtimeconfig.json
 /Users/anpilova/Projects/fmanagerFull/fmanagerFull/bin/Debug/netcoreapp2.0/fmanagerFull.runtimeconfig.dev.json
 /Users/anpilova/Projects/fmanagerFull/fmanagerFull/bin/Debug/netcoreapp2.0/fmanagerFull.dll
 /Users/anpilova/Projects/fmanagerFull/fmanagerFull/bin/Debug/netcoreapp2.0/fmanagerFull.pdb
-/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.csproj.CoreCompileInputs.cache
-/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.AssemblyInfoInputs.cache
-/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.AssemblyInfo.cs
 /Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.dll
 /Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.pdb
-/Users/anpilova/Projects/fmanagerFull/fmanagerFull/obj/Debug/netcoreapp2.0/fmanagerFull.csprojResolveAssemblyReference.cache

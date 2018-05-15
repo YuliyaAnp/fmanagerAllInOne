@@ -7,9 +7,9 @@ namespace fmanagerFull.Controllers
     [Route("[controller]")]
     public class TransactionsController : Controller
     {
-        private readonly ITransactionsService transactionsService;
+        private readonly TransactionsService transactionsService;
 
-        public TransactionsController(ITransactionsService transactionsService)
+        public TransactionsController(TransactionsService transactionsService)
         {
             this.transactionsService = transactionsService;
         }
@@ -29,9 +29,9 @@ namespace fmanagerFull.Controllers
         }
 
         [HttpGet("Get/{id}", Name = "GetTransaction")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
-            var transaction = await transactionsService.GetById(id);
+            var transaction = transactionsService.GetById(id);
             if (transaction == null)
             {
                 return NotFound();
@@ -41,12 +41,12 @@ namespace fmanagerFull.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody]Transaction transaction)
+        public IActionResult Create([FromBody]Transaction transaction)
         {
             if (transaction == null)
                 return BadRequest();
 
-            await transactionsService.AddTransaction(transaction);
+            transactionsService.AddTransaction(transaction);
 
             return Ok();
         }
@@ -71,13 +71,13 @@ namespace fmanagerFull.Controllers
         //}
 
         [HttpDelete("Delete/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var trans = await transactionsService.GetById(id);
+            var trans = transactionsService.GetById(id);
             if (trans == null)
                 return NotFound();
 
-            transactionsService.DeleteTransaction(trans);
+        //    transactionsService.DeleteTransaction(trans);
 
             return new NoContentResult();
 
