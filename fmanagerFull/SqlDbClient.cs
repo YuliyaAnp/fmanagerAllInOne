@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using fmanagerFull.Models;
 using MySql.Data.MySqlClient;
@@ -58,7 +57,61 @@ namespace fmanagerFull
             return result;
         }
 
-        public Account GetAccountById(int id)
+		public IList<Account> GetAllAccounts()
+        {
+            var result = new List<Account>();
+            Connection.Open();
+
+            string commandString = $"SELECT * FROM TestDatabase.TestAccounts;";
+            var command = new MySqlCommand(commandString, Connection);
+            command.ExecuteNonQuery();
+
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var ac = new Account();
+                    ac.Id = reader.GetInt32(0);
+                    ac.Balance = reader.GetInt32(1);
+                    ac.Name = reader.GetString(2);
+                    result.Add(ac);
+                }
+            }
+            Connection.Close();
+
+            return result;
+        }
+
+        internal void InsertTransactionRecord(TransactionRecord transactionRecord)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TransactionRecord GetTransactionById(int id)
+		{
+            var transactionRecord = new TransactionRecord();
+            Connection.Open();
+
+            string commandString = $"SELECT * FROM TestDatabase.TestTransactions WHERE Id = {id};";
+            var command = new MySqlCommand(commandString, Connection);
+            command.ExecuteNonQuery();
+
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                reader.Read();
+                transactionRecord.Id = reader.GetInt32(0);
+                transactionRecord.Sum = reader.GetInt32(1);
+                transactionRecord.Description = reader.GetString(2);
+                transactionRecord.DateTime = DateTime.Parse(reader.GetString(3));
+                transactionRecord.AccountToIncreaseId = reader.GetInt32(4);
+                transactionRecord.AccountToSubstractId = reader.GetInt32(5);
+            }
+            Connection.Close();
+
+            return transactionRecord;
+		}
+
+		public Account GetAccountById(int id)
         {
             Connection.Open();
 
@@ -72,68 +125,13 @@ namespace fmanagerFull
             {
                 reader.Read();
                 account.Id = reader.GetInt32(0);
-                account.Balance = reader.GetInt32(1);
+                account.Balance = reader.GetDouble(1);
                 account.Name = reader.GetString(2);
             }
 
             Connection.Close();
 
             return account;
-        }
-
-        public void CreateTestTransactionTable()
-        {
-            Connection.Open();
-
-            string commandString = "CREATE TABLE IF NOT EXISTS TestDatabase.TestTransactions (id INT, sum INT, description NVARCHAR(200), datetime DATE, accounttoincreasename INT, accounttodecreasename INT);";
-            var command = new MySqlCommand(commandString, Connection);
-            command.ExecuteNonQuery();
-
-            Connection.Close();
-        }
-
-        public void InsertTestTransactions()
-        {
-            Connection.Open();
-
-            string commandString = "INSERT INTO TestDatabase.TestTransactions VALUES (1, -10, 'McDonalds', '2018-04-28', '1', '2')";
-            var command = new MySqlCommand(commandString, Connection);
-            command.ExecuteNonQuery();
-
-            Connection.Close();
-        }
-
-        public void CreateTestAccountsTable()
-        {
-            Connection.Open();
-
-            string commandString = "CREATE TABLE IF NOT EXISTS TestDatabase.TestAccounts (id INT, balance DOUBLE, name NVARCHAR(200));";
-            var command = new MySqlCommand(commandString, Connection);
-            command.ExecuteNonQuery();
-
-            Connection.Close();
-        }
-
-        public void InsertTestAccounts()
-        {
-            Connection.Open();
-
-            string commandString = "INSERT INTO TestDatabase.TestAccounts VALUES (1, 0, 'Cafe'), (2, 0, 'Salary')";
-            var command = new MySqlCommand(commandString, Connection);
-            command.ExecuteNonQuery();
-
-            Connection.Close();
-        }
-
-        public void DropTestDatabase()
-        {
-            Connection.Open();
-
-            string commandString = "DROP DATABASE TestDatabase;";
-            var command = new MySqlCommand(commandString, Connection);
-            command.ExecuteNonQuery();
-
-            Connection.Close();
         }
 
         public void Dispose()

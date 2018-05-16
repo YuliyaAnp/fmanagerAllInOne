@@ -1,16 +1,14 @@
 ﻿<Properties StartupConfiguration="{1DC5DEEB-35DC-4E1F-95B1-E28572942518}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="fmanagerFull/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="fmanagerFull/SqlDbClient.cs">
     <Files>
-      <File FileName="fmanagerFull/Controllers/TransactionsService.cs" Line="59" Column="19" />
-      <File FileName="fmanagerFull.UnitTests/TransactionsServiceTests.cs" Line="57" Column="29" />
-      <File FileName="fmanagerFull/SqlDbClient.cs" Line="80" Column="27" />
+      <File FileName="fmanagerFull/Controllers/TransactionsService.cs" Line="49" Column="55" />
+      <File FileName="fmanagerFull.UnitTests/TransactionsServiceTests.cs" Line="97" Column="54" />
       <File FileName="fmanagerFull/Models/Account.cs" Line="9" Column="9" />
-      <File FileName="fmanagerFull/Startup.cs" Line="30" Column="33" />
       <File FileName="fmanagerFull/Controllers/TransactionsController.cs" Line="24" Column="25" />
-      <File FileName="fmanagerFull/Models/Transaction.cs" Line="12" Column="11" />
-      <File FileName="fmanagerFull/Models/TransactionRecord.cs" Line="15" Column="1" />
-      <File FileName="fmanagerFull/Models/SeedData.cs" Line="92" Column="4" />
+      <File FileName="fmanagerFull/Models/Transaction.cs" Line="12" Column="49" />
       <File FileName="fmanagerFull/Program.cs" Line="27" Column="23" />
+      <File FileName="fmanagerFull.UnitTests/TestSqlDbClient.cs" Line="70" Column="124" />
+      <File FileName="fmanagerFull/SqlDbClient.cs" Line="110" Column="9" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
@@ -34,7 +32,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/anpilova/Projects/fmanagerFull/fmanagerFull/Models/FinanceManagerContext.cs" relfile="fmanagerFull/Models/FinanceManagerContext.cs" line="27" column="15" />
-      <Breakpoint file="/Users/anpilova/Projects/fmanagerFull/fmanagerFull/SqlDbClient.cs" relfile="fmanagerFull/SqlDbClient.cs" line="40" column="26" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

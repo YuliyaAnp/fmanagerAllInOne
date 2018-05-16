@@ -28,5 +28,6 @@
   <ItemGroup>
     <Compile Remove="Models\ITransactionContext.cs" />
     <Compile Remove="Controllers\ITransactionsService.cs" />
+    <Compile Remove="Models\SeedData.cs" />
   </ItemGroup>
 </Project>
