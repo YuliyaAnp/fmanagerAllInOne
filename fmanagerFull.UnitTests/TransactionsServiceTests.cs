@@ -15,8 +15,8 @@ namespace fmanagerFull.UnitTests
 
         public TransactionsServiceShould()
         {
-            testSqlClient = new TestSqlDbClient("TestDatabase", "root", "515BuisWaW");
-            sqlClient = new SqlDbClient("TestDatabase", "root", "515BuisWaW");
+            testSqlClient = new TestSqlDbClient("TestDatabase", "admin", "1234");
+            sqlClient = new SqlDbClient("TestDatabase", "admin", "1234");
 
             transactionsService = new TransactionsService(sqlClient);
 

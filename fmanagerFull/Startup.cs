@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using React.AspNet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using fmanagerFull.Models;
-using Microsoft.EntityFrameworkCore;
 using fmanagerFull.Controllers;
 
 namespace fmanagerFull
@@ -30,7 +25,6 @@ namespace fmanagerFull
             services.AddReact();
             
             services.AddMvc();
-           // services.AddDbContext<FinanceManagerContext>(options => options.UseSqlite("DataSource=FinanceManager.db"));
             services.AddTransient<TransactionsService, TransactionsService>();
 
             return services.BuildServiceProvider();
