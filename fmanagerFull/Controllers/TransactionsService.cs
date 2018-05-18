@@ -24,6 +24,7 @@ namespace fmanagerFull.Controllers
             {
                 transactions.Add(new Transaction()
                 {
+                    Id = transactionRecord.Id,
                     Sum = transactionRecord.Sum,
                     Description = transactionRecord.Description,
                     DateTime = transactionRecord.DateTime,
@@ -41,6 +42,7 @@ namespace fmanagerFull.Controllers
 
             Transaction transaction = new Transaction
             {
+                Id = transactionRecord.Id,
                 Sum = transactionRecord.Sum,
                 Description = transactionRecord.Description,
                 DateTime = transactionRecord.DateTime,
@@ -82,7 +84,8 @@ namespace fmanagerFull.Controllers
 
         public void DeleteTransaction(Transaction transaction)
         {
-            
+            client.DeleteTransaction(transaction.Id);
+
             //var accounts = context.GetAccounts().ToList();
 
             //TransactionRecord transactionRecord = new TransactionRecord

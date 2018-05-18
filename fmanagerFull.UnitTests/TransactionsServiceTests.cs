@@ -9,9 +9,9 @@ namespace fmanagerFull.UnitTests
 {
     public class TransactionsServiceShould : IDisposable
     {
-        TransactionsService transactionsService;
-        TestSqlDbClient testSqlClient;
-        SqlDbClient sqlClient;
+        readonly TransactionsService transactionsService;
+        readonly TestSqlDbClient testSqlClient;
+        readonly SqlDbClient sqlClient;
 
         public TransactionsServiceShould()
         {
@@ -35,6 +35,7 @@ namespace fmanagerFull.UnitTests
             {
                 new Transaction()
                         {
+                            Id = 1,
                             Sum = -10,
                             Description = "McDonalds",
                             DateTime = "2018-04-28",
@@ -53,6 +54,7 @@ namespace fmanagerFull.UnitTests
         {
             var expectedResult = new Transaction()
                 {
+                    Id = 1,
                     Sum = -10,
                     Description = "McDonalds",
                     DateTime = "2018-04-28",
@@ -72,6 +74,7 @@ namespace fmanagerFull.UnitTests
             {
                 new Transaction()
                         {
+                            Id = 1,
                             Sum = -10,
                             Description = "McDonalds",
                             DateTime = "2018-04-28",
@@ -80,6 +83,7 @@ namespace fmanagerFull.UnitTests
                         },
                 new Transaction()
                         {
+                            Id = 2,
                             Sum = -20,
                             Description = "Mumu",
                             DateTime = "2018-05-01",
@@ -104,42 +108,27 @@ namespace fmanagerFull.UnitTests
             actualResult.Should().BeEquivalentTo(expectedResult);
         }
 
-        //[Fact]
-        //public void ReturnUpdatedTransactions_WhenDeleteTransaction()
-        //{
-        // //   SetupTestDatabase();
+        [Fact]
+        public void ReturnUpdatedTransactions_WhenDeleteTransaction()
+        {
+            var expectedResult = new List<Transaction>();
 
-        //    var expectedResult = new List<Transaction>()
-        //    {
-        //        new Transaction()
-        //                {
-        //                    Id = 1,
-        //                    Sum = -10,
-        //                    Description = "McDonalds",
-        //                    DateTime = DateTime.Today,
-        //                    AccountToIncreaseName = "Cafe",
-        //                    AccountToSubstractName = "Santander debit card",
-        //   //                 Currency = Currency.Pound
-        //                }
-        //    };
+            var transactionToDelete = new Transaction()
+            {
+                Id = 1,
+                Sum = -10,
+                Description = "McDonalds",
+                DateTime = "2018-04-28",
+                AccountToIncreaseName = "Cafe",
+                AccountToSubstractName = "Salary"
+            };
 
-        //    var transactionToDelete = new Transaction()
-        //    {
-        //        Id = 2,
-        //        Sum = -20,
-        //        Description = "Mumu",
-        //        DateTime = DateTime.Today,
-        //        AccountToIncreaseName = "Cafe",
-        //        AccountToSubstractName = "Rubles cash",
-        //   //     Currency = Currency.Pound
-        //    };
+            transactionsService.DeleteTransaction(transactionToDelete);
 
-        //    transactionsService.DeleteTransaction(transactionToDelete);
+            var actualResult = transactionsService.GetTransactions();
 
-        //    var actualResult = transactionsService.GetTransactions();
-
-        //    actualResult.Should().BeEquivalentTo(expectedResult);
-        //}
+            actualResult.Should().BeEquivalentTo(expectedResult);
+        }
 
         public void Dispose()
         {

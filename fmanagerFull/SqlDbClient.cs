@@ -151,5 +151,17 @@ namespace fmanagerFull
                 command.ExecuteNonQuery();
             }
         }
+
+        public void DeleteTransaction(int transactionId)
+        {
+            using (var connection = new MySqlConnection(connstring))
+            {
+                connection.Open();
+
+                var commandString = $"DELETE FROM {databaseName}.TestTransactions WHERE Id = {transactionId};";
+                var command = new MySqlCommand(commandString, connection);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
