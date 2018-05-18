@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using fmanagerFull.Models;
 
 namespace fmanagerFull.Controllers
 {
     public class TransactionsService
     {
-        public SqlDbClient client;
+        private readonly SqlDbClient client;
 
         public TransactionsService(SqlDbClient sqlDbClient)
         {
@@ -36,7 +35,7 @@ namespace fmanagerFull.Controllers
             return transactions;
         }
 
-        public Transaction GetById(int id)
+        public Transaction GetTransactionById(int id)
         {
             var transactionRecord = client.GetTransactionById(id);
 
@@ -52,11 +51,16 @@ namespace fmanagerFull.Controllers
             return transaction;
         }
 
+        public Account GetAccountById(int id)
+        {
+            return client.GetAccountById(id);
+        }
+
         public void AddTransaction(Transaction transaction)
         {
             var accounts = client.GetAllAccounts();
 
-            TransactionRecord transactionRecord = new TransactionRecord
+            var transactionRecord = new TransactionRecord
             {
                 Sum = transaction.Sum,
                 Description = transaction.Description,
@@ -66,16 +70,14 @@ namespace fmanagerFull.Controllers
             };
 
             client.InsertTransactionRecord(transactionRecord);
+            
+            Account accountToSubstruct = client.GetAccountById(transactionRecord.AccountToSubstractId);
+            accountToSubstruct.Balance -= transactionRecord.Sum;
+            client.UpdateAccount(accountToSubstruct);
 
-            //Account accountToSubstruct = context.GetAccountById(transactionRecord.AccountToSubstractId);
-            //accountToSubstruct.Balance -= transaction.Sum;
-            //context.UpdateAccount(accountToSubstruct);
-            //context.SaveChanges();
-
-            //Account accountToIncrease = context.GetAccountById(transactionRecord.AccountToIncreaseId);
-            //accountToIncrease.Balance += transaction.Sum;
-            //context.UpdateAccount(accountToIncrease);
-            //context.SaveChanges();
+            Account accountToIncrease = client.GetAccountById(transactionRecord.AccountToIncreaseId);
+            accountToIncrease.Balance += transactionRecord.Sum;
+            client.UpdateAccount(accountToIncrease);
         }
 
         public void DeleteTransaction(Transaction transaction)

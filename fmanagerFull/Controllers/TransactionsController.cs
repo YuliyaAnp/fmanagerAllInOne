@@ -31,7 +31,7 @@ namespace fmanagerFull.Controllers
         [HttpGet("Get/{id}", Name = "GetTransaction")]
         public IActionResult Get(int id)
         {
-            var transaction = transactionsService.GetById(id);
+            var transaction = transactionsService.GetTransactionById(id);
             if (transaction == null)
             {
                 return NotFound();
@@ -73,7 +73,7 @@ namespace fmanagerFull.Controllers
         [HttpDelete("Delete/{id}")]
         public IActionResult Delete(int id)
         {
-            var trans = transactionsService.GetById(id);
+            var trans = transactionsService.GetTransactionById(id);
             if (trans == null)
                 return NotFound();
 

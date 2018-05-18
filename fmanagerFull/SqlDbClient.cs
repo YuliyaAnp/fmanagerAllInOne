@@ -9,46 +9,37 @@ namespace fmanagerFull
     {
         public SqlDbClient(string databaseName, string userName, string password)
         {
-            string connstring = string.Format($"server=localhost;UID={userName};password={password}");
+            var connstring = string.Format($"server=localhost;UID={userName};password={password}");
             Connection = new MySqlConnection(connstring);
             this.databaseName = databaseName;
         }
 
         public MySqlConnection Connection { get; private set; }
 
-        private string databaseName;
-
-        public void CreateTestDatabase()
-        {
-            Connection.Open();
-
-            string commandString = $"CREATE DATABASE IF NOT EXISTS `{databaseName}`;";
-            var command = new MySqlCommand(commandString, Connection);
-            command.ExecuteNonQuery();
-
-            Connection.Close();
-        }
+        private readonly string databaseName;
 
         public IList<TransactionRecord> GetTransactions()
         {
             var result = new List<TransactionRecord>();
             Connection.Open();
 
-            string commandString = $"SELECT * FROM TestDatabase.TestTransactions;";
+            var commandString = $"SELECT * FROM {databaseName}.TestTransactions;";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
-            using (MySqlDataReader reader = command.ExecuteReader())
+            using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    var tr = new TransactionRecord();
-                    tr.Id = reader.GetInt32(0);
-                    tr.Sum = reader.GetInt32(1);
-                    tr.Description = reader.GetString(2);
-                    tr.DateTime = DateTime.Parse(reader.GetString(3));
-                    tr.AccountToIncreaseId = reader.GetInt32(4);
-                    tr.AccountToSubstractId = reader.GetInt32(5);
+                    var tr = new TransactionRecord
+                    {
+                        Id = reader.GetInt32(0),
+                        Sum = reader.GetInt32(1),
+                        Description = reader.GetString(2),
+                        DateTime = reader.GetString(3),
+                        AccountToIncreaseId = reader.GetInt32(4),
+                        AccountToSubstractId = reader.GetInt32(5)
+                    };
                     result.Add(tr);
                 }
             }
@@ -62,11 +53,11 @@ namespace fmanagerFull
             var result = new List<Account>();
             Connection.Open();
 
-            string commandString = $"SELECT * FROM TestDatabase.TestAccounts;";
+            var commandString = $"SELECT * FROM {databaseName}.TestAccounts;";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
-            using (MySqlDataReader reader = command.ExecuteReader())
+            using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -84,7 +75,13 @@ namespace fmanagerFull
 
         internal void InsertTransactionRecord(TransactionRecord transactionRecord)
         {
-            throw new NotImplementedException();
+            Connection.Open();
+
+            var commandString = $"INSERT INTO {databaseName}.TestTransactions (sum, description, date, accounttoincreasename, accounttodecreasename) VALUES ({transactionRecord.Sum}, '{transactionRecord.Description}', '{transactionRecord.DateTime}', {transactionRecord.AccountToIncreaseId}, {transactionRecord.AccountToSubstractId});";
+            var command = new MySqlCommand(commandString, Connection);
+            command.ExecuteNonQuery();
+
+            Connection.Close();
         }
 
         public TransactionRecord GetTransactionById(int id)
@@ -92,17 +89,17 @@ namespace fmanagerFull
             var transactionRecord = new TransactionRecord();
             Connection.Open();
 
-            string commandString = $"SELECT * FROM TestDatabase.TestTransactions WHERE Id = {id};";
+            var commandString = $"SELECT * FROM {databaseName}.TestTransactions WHERE Id = {id};";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
-            using (MySqlDataReader reader = command.ExecuteReader())
+            using (var reader = command.ExecuteReader())
             {
                 reader.Read();
                 transactionRecord.Id = reader.GetInt32(0);
                 transactionRecord.Sum = reader.GetInt32(1);
                 transactionRecord.Description = reader.GetString(2);
-                transactionRecord.DateTime = DateTime.Parse(reader.GetString(3));
+                transactionRecord.DateTime = reader.GetString(3);
                 transactionRecord.AccountToIncreaseId = reader.GetInt32(4);
                 transactionRecord.AccountToSubstractId = reader.GetInt32(5);
             }
@@ -115,13 +112,13 @@ namespace fmanagerFull
         {
             Connection.Open();
 
-            string commandString = $"SELECT * FROM TestDatabase.TestAccounts WHERE Id = {id};";
+            var commandString = $"SELECT * FROM {databaseName}.TestAccounts WHERE Id = {id};";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
             var account = new Account();
 
-            using (MySqlDataReader reader = command.ExecuteReader())
+            using (var reader = command.ExecuteReader())
             {
                 reader.Read();
                 account.Id = reader.GetInt32(0);
@@ -137,6 +134,17 @@ namespace fmanagerFull
         public void Dispose()
         {
             Connection.Dispose();
+        }
+
+        public void UpdateAccount(Account account)
+        {
+            Connection.Open();
+
+            var commandString = $"UPDATE {databaseName}.TestAccounts SET Balance = {account.Balance} WHERE Id = {account.Id};";
+            var command = new MySqlCommand(commandString, Connection);
+            command.ExecuteNonQuery();
+
+            Connection.Close();
         }
     }
             

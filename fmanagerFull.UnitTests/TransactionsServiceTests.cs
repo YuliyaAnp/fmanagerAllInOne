@@ -23,6 +23,9 @@ namespace fmanagerFull.UnitTests
             testSqlClient.CreateTestDatabase();
             testSqlClient.CreateTestTransactionTable();
             testSqlClient.CreateTestAccountsTable();
+
+            testSqlClient.InsertTestTransactions();
+            testSqlClient.InsertTestAccounts();
         }
 
         [Fact]
@@ -34,14 +37,11 @@ namespace fmanagerFull.UnitTests
                         {
                             Sum = -10,
                             Description = "McDonalds",
-                            DateTime = DateTime.Parse("2018-04-28"),
+                            DateTime = "2018-04-28",
                             AccountToIncreaseName = "Cafe",
                             AccountToSubstractName = "Salary"
                         }
             };
-
-            testSqlClient.InsertTestTransactions();
-            testSqlClient.InsertTestAccounts();
 
             var actualResult = transactionsService.GetTransactions();
 
@@ -55,12 +55,12 @@ namespace fmanagerFull.UnitTests
                 {
                     Sum = -10,
                     Description = "McDonalds",
-                    DateTime = DateTime.Parse("2018-04-28"),
+                    DateTime = "2018-04-28",
                     AccountToIncreaseName = "Cafe",
                     AccountToSubstractName = "Salary"
                 };
 
-            var actualResult = transactionsService.GetById(1);
+            var actualResult = transactionsService.GetTransactionById(1);
 
             actualResult.Should().BeEquivalentTo(expectedResult);
         }
@@ -74,7 +74,7 @@ namespace fmanagerFull.UnitTests
                         {
                             Sum = -10,
                             Description = "McDonalds",
-                            DateTime = DateTime.Parse("2018-04-28"),
+                            DateTime = "2018-04-28",
                             AccountToIncreaseName = "Cafe",
                             AccountToSubstractName = "Salary"
                         },
@@ -82,17 +82,17 @@ namespace fmanagerFull.UnitTests
                         {
                             Sum = -20,
                             Description = "Mumu",
-                            DateTime = DateTime.Parse("2018-05-01"),
+                            DateTime = "2018-05-01",
                             AccountToIncreaseName = "Cafe",
                             AccountToSubstractName = "Debit card"
                         }
             };
-
+            
             var newTransaction = new Transaction()
             {
                 Sum = -20,
                 Description = "Mumu",
-                DateTime = DateTime.Parse("2018-05-01"),
+                DateTime = "2018-05-01",
                 AccountToIncreaseName = "Cafe",
                 AccountToSubstractName = "Debit card"
             };

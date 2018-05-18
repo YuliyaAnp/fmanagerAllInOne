@@ -1,10 +1,7 @@
-﻿
-using System;
-using System.Collections.Generic;
-using fmanagerFull.Models;
+﻿using System;
 using MySql.Data.MySqlClient;
 
-namespace fmanagerFull
+namespace fmanagerFull.UnitTests
 {
     public class TestSqlDbClient : IDisposable
     {
@@ -17,7 +14,7 @@ namespace fmanagerFull
 
         public MySqlConnection Connection { get; private set; }
 
-        private string databaseName;
+        private readonly string databaseName;
 
         public void CreateTestDatabase()
         {
@@ -34,7 +31,7 @@ namespace fmanagerFull
         {
             Connection.Open();
 
-            string commandString = "CREATE TABLE IF NOT EXISTS TestDatabase.TestTransactions (id INT, sum INT, description NVARCHAR(200), datetime DATE, accounttoincreasename INT, accounttodecreasename INT);";
+            string commandString = "CREATE TABLE IF NOT EXISTS TestDatabase.TestTransactions (id INT NOT NULL AUTO_INCREMENT, sum INT, description NVARCHAR(200), date NVARCHAR(50), accounttoincreasename INT, accounttodecreasename INT, PRIMARY KEY (id));";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
@@ -45,7 +42,7 @@ namespace fmanagerFull
         {
             Connection.Open();
 
-            string commandString = "INSERT INTO TestDatabase.TestTransactions VALUES (1, -10, 'McDonalds', '2018-04-28', '1', '2')";
+            string commandString = "INSERT INTO TestDatabase.TestTransactions (sum, description, date, accounttoincreasename, accounttodecreasename) VALUES (-10, 'McDonalds', '2018-04-28', '1', '2')";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
@@ -56,7 +53,7 @@ namespace fmanagerFull
         {
             Connection.Open();
 
-            string commandString = "CREATE TABLE IF NOT EXISTS TestDatabase.TestAccounts (id INT, balance DOUBLE, name NVARCHAR(200));";
+            string commandString = "CREATE TABLE IF NOT EXISTS TestDatabase.TestAccounts (id INT NOT NULL AUTO_INCREMENT, balance DOUBLE, name NVARCHAR(200), PRIMARY KEY (id));";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
@@ -67,7 +64,7 @@ namespace fmanagerFull
         {
             Connection.Open();
 
-            string commandString = "INSERT INTO TestDatabase.TestAccounts VALUES (1, 0, 'Cafe'), (2, 0, 'Salary'), (3, 0, 'Debit card')";
+            string commandString = "INSERT INTO TestDatabase.TestAccounts (balance, name) VALUES (0, 'Cafe'), (0, 'Salary'), (0, 'Debit card')";
             var command = new MySqlCommand(commandString, Connection);
             command.ExecuteNonQuery();
 
